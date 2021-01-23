@@ -1,19 +1,20 @@
 
 import React from "react"
 
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import Header from "@components/header";
 import Footer from "@components/footer"
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
-const Top = () => {
+
+const AboutPage = () => {
     return (
         <div>
             <Header/>
-            <h1>Gatsby Blog Site</h1>
+            <h1>About Page</h1>
             <button onClick={() => scrollTo('html')}>トップに戻る</button>
             <Footer/>
         </div>
     )
 }
 
-export default Top
+export default AboutPage

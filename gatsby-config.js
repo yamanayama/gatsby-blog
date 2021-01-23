@@ -1,17 +1,76 @@
+const path = require(`path`)
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `naomi murakami portfolio site`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Nao`,
+      summary: `React勉強中`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `React勉強中`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    user: { name: "Naomi Murakami", email: "murakami.naomi0000@gmail.com" },
     social: {
-      twitter: `kylemathews`,
+      twitter: `yamanayama`,
     },
+    category: ["Laravel", "Vue.js", "React"],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+          "@layouts": "src/layouts",
+          "@pages": "src/pages",
+          "@sass": "src/sass",
+          "@templates": "src/templates",
+          "@posts": "content/posts",
+        },
+        extensions: [
+          "js",
+        ],
+      }
+    },
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: 'rh9p4mqshel0',
+        accessToken: '26_g7eYrNgnAizKdLKaaJMx0ASaOSAxsZhZs4nhTU0E',
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        "sourceMap": true,
+        "autoLabel": "dev-only",
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `tomato`,
+        // Disable the loading spinner.
+        showSpinner: false,
+        minimum: 0.08,
+        easing: 'linear',
+        positionUsing: '',
+        speed: 200,
+        trickle: true,
+        trickleSpeed: 200,
+        barSelector: '[role="bar"]',
+        spinnerSelector: '[role="spinner"]',
+        parent: 'body',
+        template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
